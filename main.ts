@@ -89,11 +89,14 @@ function bot_Servo_Motors_Basic_Fn (network_ReceivedString_FromControllerJoystic
                 }
             }
         }
+        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+        "Motors reversed on Swim Bot"
+        )
         // //jwc o roboQuest.powerMotorsViaBlueRedBlackPins(PortGroup_BlueRedBlack__PortIds__Enum.S1_MotorLeft__S0_MotorRight, motor_Power_ZERO_INT, motor_Power_ZERO_INT)
         quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
         quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorLeft__S0_MotorRight,
-        normal_accel_speed,
-        normal_accel_speed
+        normal_accel_speed * tap_right_turn_bias,
+        normal_accel_speed * tap_left_turn_bias
         )
     } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "backward") {
         images.createImage(`
@@ -132,11 +135,14 @@ function bot_Servo_Motors_Basic_Fn (network_ReceivedString_FromControllerJoystic
                 }
             }
         }
+        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+        "Motors reversed on Swim Bot"
+        )
         // //jwc o roboQuest.powerMotorsViaBlueRedBlackPins(PortGroup_BlueRedBlack__PortIds__Enum.S1_MotorLeft__S0_MotorRight, motor_Power_ZERO_INT, motor_Power_ZERO_INT)
         quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(
         quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorLeft__S0_MotorRight,
-        normal_accel_speed,
-        normal_accel_speed
+        normal_accel_speed * tap_left_turn_bias,
+        normal_accel_speed * tap_right_turn_bias
         )
     } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "left") {
         last_joystick_command = 0
@@ -778,6 +784,8 @@ let screenBrightness_Heartbeat_Count_Int = 0
 let screen_XY_Brightness_Old_Num = 0
 let screen_Y_Old_Num = 0
 let screen_X_Old_Num = 0
+let tap_right_turn_bias = 0
+let tap_left_turn_bias = 0
 let max_turbo_speed = 0
 let max_normal_speed = 0
 let accel_rate = 0
@@ -813,8 +821,8 @@ max_turbo_speed = 99
 quest_Note_4.quest_Show_String_For_Note_Small_Func(
 "Tap-to-turn variables"
 )
-let tap_left_turn_bias = 1
-let tap_right_turn_bias = 1
+tap_left_turn_bias = 1
+tap_right_turn_bias = 1
 quest_Note_1.quest_Show_String_For_Note_Big_Func(
 "Below, Setup Code for Student:"
 )
@@ -1007,6 +1015,14 @@ basic.forever(function () {
     }
 })
 basic.forever(function () {
+    quest_Note_1.quest_Show_String_For_Note_Small_Func(
+    "Ver 2.11.0: 25-0528-1900"
+    )
+    quest_Note_1.quest_Show_String_For_Note_Small_Func(
+    "©️ 2025 Quest Institute. All rights reserved."
+    )
+})
+basic.forever(function () {
     quest_Note_6.quest_Show_String_For_Note_Big_Func(
     ""
     )
@@ -1193,17 +1209,6 @@ basic.forever(function () {
         "Network Message Max_Character_Length: 19"
         )
     }
-})
-basic.forever(function () {
-	
-})
-basic.forever(function () {
-    quest_Note_1.quest_Show_String_For_Note_Small_Func(
-    "Ver 2.11.0: 25-0528-1900"
-    )
-    quest_Note_1.quest_Show_String_For_Note_Small_Func(
-    "©️ 2025 Quest Institute. All rights reserved."
-    )
 })
 basic.forever(function () {
     if (true) {
